@@ -1,0 +1,149 @@
+/* daily.css */
+
+/* 修改 daily.css */
+body {
+    /* 1. 锁死核心：锁死背景不随滚动条走 */
+    background-attachment: fixed; 
+    
+    /* 2. 背景图片路径：替换成你存放背景图的路径 */
+    background-image: url('lemon.jpg'); 
+    
+    /* 3. 智能铺满：保证图片拉伸满全屏，且不变形 */
+    background-size: cover; 
+    
+    /* 4. 居中对齐：让图片的中心对准屏幕中心 */
+    background-position: center;
+   }
+
+/* 1. 大白条容器：现在它是唯一的背景保护区 */
+.archive-container {
+    max-width: 800px;         
+    margin: 40px auto;        /* 整体离网页顶端留一点点距离就好 */
+    background-color: white;   
+    padding: 40px 80px;       /* 这里的 40px 控制了“日常碎片”离白条顶部的距离 */
+    box-shadow: 0 0 50px rgba(0,0,0,0.05);
+    font-family: "Source Han Serif SC", "STSong", "Songti SC", "SimSun", serif;
+}
+
+/* 2. 标题区：因为它已经在白条里了，不需要自己的背景和过大的间距 */
+.page-header {
+    text-align: center;
+    padding-bottom: 30px;     /* 这个数字控制“日常碎片”和第一个片段之间的距离 */
+    background: none;         /* 去掉单独的背景 */
+}
+
+.main-title {
+    margin: 0;                
+    color: #b0d468; /* 焦糖棕归位 */
+    font-family: "PingFang SC", sans-serif; /* 大标题用黑体，更有力量感 */
+    font-size: 28px;
+    letter-spacing: 6px;
+}
+
+/* 隐藏复选框 */
+.toggle-control {
+    display: none;
+}
+
+/* 内容块：默认状态 */
+.content-block {
+    display: block;
+    cursor: pointer;
+    line-height: 1.8;
+    color: #444444;
+    font-size: 16px; /* 方便你后期修改 px */
+    white-space: pre-wrap; /* 魔法：保留你的所有换行 */
+    
+    position: relative;     /* 1. 给阅读更多当参考点 */
+    padding-bottom: 25px;  /* 2. 给底部留出空位，别让文字压住按钮 */
+
+    max-height:100px; /* 默认展示的高度，大约 3 行 */
+    overflow: hidden;
+    transition: max-height 0.6s ease; /* 丝滑展开动画 */
+    margin-bottom: 20px;
+}
+
+/* 核心魔法：利用 ::first-line 让第一行自动变成标题 */
+.content-block::first-line {
+    font-weight: bold;
+    font-size: 22px; /* 标题 px */
+    color: #99b46f; /* 标题颜色 */
+    line-height: 1.5; /* 给标题留出呼吸感 */
+}
+
+/* 点击展开后的状态 */
+.toggle-control:checked + .content-block {
+    max-height: 2000px; /* 展开后的高度上限 */
+    color: #333333;
+    padding-bottom: 0 !important;
+}
+
+/* 1px 浅灰色细横线 */
+.divider {
+    height: 1px;
+    background-color: #eeeeee;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* 鼠标悬浮提示（可选） */
+.content-block:hover {
+    opacity: 0.8;
+}
+
+
+
+/* “阅读更多”提示的样式 */
+.more-hint {
+    position: absolute; /* 绝对定位，脱离文字流 */
+    right: 0;           /* 靠右 */
+    bottom: 5px;        /* 距离底部 5px */
+    background: #ffffff;/* 遮掉重叠的文字线 */
+    padding-left: 15px; /* 左边留白 */
+    font-size: 14px;
+    color: #7d8f5c;
+}
+
+/* 当点击展开后，隐藏“阅读更多”这四个字 */
+.toggle-control:checked + .content-block .more-hint {
+    display: none;
+}
+
+.back-home-fixed {
+    position: fixed;    /* 核心：固定在窗口，不随滚动条走 */
+    right: 40px;        /* 距离屏幕右边 40px */
+    bottom: 40px;       /* 距离屏幕底部 40px */
+    
+    /* 样式美化：清冷克制感 */
+    text-decoration: none;
+    color: #73ae52;
+    font-size: 15px;
+    letter-spacing: 2px;
+    background:#fbf1d7;
+    padding: 10px 15px;
+    border: 1px solid #eee;
+    z-index: 9;       /* 确保它永远在文字的最上面，不被盖住 */
+    transition: all 0.3s;
+}
+
+.back-home-fixed:hover {
+    color: #333;
+    border-color: #ccc;
+    background: #e1f5fe;
+}
+
+/* 1. 全局默认指针：电吉他 */
+html, body {
+    cursor: url('guitar.png'), auto; /* 替换成你存放吉他图片的路径 */
+}
+
+/* 2. 可点击元素指针：拨片 */
+/* 当鼠标移到链接、按钮、展开标签、返回按钮上时切换 */
+a, 
+button, 
+label, 
+.back-home-fixed, 
+.content-block, 
+.more-hint {
+    cursor: url('pick.png'), pointer; /* 替换成你存放拨片图片的路径 */
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>新那华敏</title>
+
+<style>
+@font-face {
+    font-family: 'MyWenKai';
+    src: url('ziti/LXGWWenKai-Regular.ttf');
+}
+@font-face {
+    font-family: 'MyXiaoWei';
+    src: url('ziti/ZCOOLXiaoWei-Regular.ttf');
+}
+@font-face {
+    font-family: 'Myming';
+    src: url('ziti/I.Ming-5.00.ttf');
+}
+
+/* ===== 全局 ===== */
+body {
+    margin: 0;
+    background: url('back.jpg') center / cover fixed;
+    image-rendering: -webkit-optimize-contrast;
+    cursor: url('pick.png'), auto;
+}
+
+/* ===== 字体统一 ===== */
+.label-text, textPath {
+    font-family: 'MyWenKai', serif;
+    font-style: italic;
+    font-size: 19px;
+    letter-spacing: 1px;
+    fill: #222;
+}
+
+.nav-bar a {
+    font-family: 'MyXiaoWei', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: #7a8ba9;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-bar a:hover {
+    color: #61c2ff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+.name {
+    font-family: "Myming";
+    margin-top: 15px;
+    font-size: 23px;
+    font-weight: 900;
+    color: #333;
+}
+
+/* ===== 布局 ===== */
+.cp-header {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== SVG ===== */
+.relation-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.line-surface { fill: none; stroke: #333; stroke-width: 2; }
+.line-inner { fill: none; stroke: #999; stroke-width: 1.5; stroke-dasharray: 8 5; }
+
+.label-text {
+    font-size: 14px;
+    fill: #444;
+    dominant-baseline: middle;
+    text-anchor: middle;
+}
+
+/* ===== 导航 ===== */
+.nav-bar {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #8eb1d1;
+    padding-top: 20px;
+}
+
+/* ===== 鼠标 ===== */
+.nav-bar a,
+textPath,
+.label-text {
+    cursor: url('guitar.png'), pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="cp-header">
+
+    <div class="character">
+        <img src="avatar1.jpg" class="avatar">
+        <div class="name">华敏</div>
+    </div>
+
+    <svg class="relation-svg" viewBox="0 0 1000 500">
+        <defs>
+            <marker id="arrow-black" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#333"/>
+            </marker>
+            <marker id="arrow-left" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#333"/>
+            </marker>
+            <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#999"/>
+            </marker>
+        </defs>
+
+        <path id="path-top-outer" class="line-surface" d="M300,180 Q500,50 700,180" marker-start="url(#arrow-left)"/>
+        <text class="label-text" dy="-15">
+            <textPath href="#path-top-outer" startOffset="50%">
+                自以为是 危险但有趣的人
+            </textPath>
+        </text>
+
+        <path id="path-bot-outer" class="line-surface" d="M300,320 Q500,450 700,320" marker-end="url(#arrow-black)"/>
+        <text class="label-text" dy="18">
+            <textPath href="#path-bot-outer" startOffset="50%">
+                麻烦的合作对象 需要压制的对手
+            </textPath>
+        </text>
+
+        <path class="line-inner" d="M680,230 L320,230" marker-end="url(#arrow-gray)"/>
+        <text x="500" y="215" class="label-text" style="font-size:17px;">
+            可以拉扯的安全对象 我选择的容器
+        </text>
+
+        <path class="line-inner" d="M320,270 L680,270" marker-end="url(#arrow-gray)"/>
+        <text x="500" y="285" class="label-text" style="font-size:17px;">
+            让我失控的人 想据为己有的存在
+        </text>
+
+    </svg>
+
+    <div class="character">
+        <img src="avatar2.jpg" class="avatar">
+        <div class="name">李新那</div>
+    </div>
+
+</div>
+
+<nav class="nav-bar">
+    <a href="character.html">角色设定</a>
+    <a href="story/index.html">剧情导航</a>
+    <a href="daily.html">日常片段</a>
+</nav>
+
+</body>
+</html>
